@@ -1,23 +1,34 @@
 package pl.com.sda;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Paginator {
 
-    private int numberOfChars;
+    private int length;
 
-    public Paginator(int numberOfChars) {
-        this.numberOfChars = numberOfChars;
+    public Paginator(int length) {
+        this.length = length;
     }
 
-    List<String> paginate(String input) {
+    String[] paginate(String input) {
         ArrayList<String> split = new ArrayList<>();
-        if (input.isEmpty()) return split;
-        for (int i = 0; i <= input.length() / numberOfChars; i++) {
-            split.add(input.substring(i * numberOfChars, Math.min((i + 1) * numberOfChars, input.length())));
+
+        if (input.isEmpty()) {
+            return new String[0];
         }
-        return split;
+
+        for (int i = 0; i <= input.length() / length; i++) {
+            split.add(input.substring(i * length, Math.min((i + 1) * length, input.length())));
+        }
+
+        if (split.get(split.size() - 1).isEmpty()) {
+            split.remove(split.size() - 1);
+        }
+
+        //System.out.println("Size: " + split.size());
+
+        String[] output = new String[split.size()];
+        return split.toArray(output);
     }
 
 }

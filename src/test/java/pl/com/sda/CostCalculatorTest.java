@@ -20,7 +20,6 @@ public class CostCalculatorTest {
     @Test
     public void testCalculateCost2() {
         CostCalculator calculator = new CostCalculator(new BigDecimal(1.5));
-        //assertThat(calculator.calculate(4)).isEqualTo(new BigDecimal(6.0));
         assertThat(calculator.calculate(4)).usingComparator(new BigDecimalComparator()).
                 isEqualTo(new BigDecimal(6));
     }
