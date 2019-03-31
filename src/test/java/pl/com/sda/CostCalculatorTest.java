@@ -2,7 +2,6 @@ package pl.com.sda;
 
 import org.assertj.core.util.BigDecimalComparator;
 import org.junit.Test;
-import pl.com.sda.CostCalculator;
 
 import java.math.BigDecimal;
 

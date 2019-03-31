@@ -2,12 +2,12 @@ package pl.com.sda;
 
 import pl.com.sda.compressor.Compressor;
 import pl.com.sda.compressor.NaiveCompressor;
+import pl.com.sda.compressor.OptimalCompressor;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Scanner;
 
-// TODO Finish this!!
 public class Main {
 
     public static void main(String[] args) {
@@ -28,8 +28,8 @@ public class Main {
         switch (typeOfCompressor){
             case "n": compressor = new NaiveCompressor();
                 break;
-//            case "o": compressor = new OptimalCompressor();
-//                break;
+            case "o": compressor = new OptimalCompressor();
+                break;
             default: throw new IllegalArgumentException();
         }
 
@@ -37,6 +37,8 @@ public class Main {
         String[] paginatedMessage = paginator.paginate(compressedMessage);
         System.out.println("Your codded and splited message: " + Arrays.toString(paginatedMessage));
         System.out.println("Cost of your message(s): " + calculator.calculate(paginatedMessage.length));
+
+        System.out.println("Uncompressed message: " + compressor.uncompress(compressedMessage));
     }
 
 }

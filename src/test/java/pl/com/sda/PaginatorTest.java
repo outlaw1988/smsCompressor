@@ -2,8 +2,6 @@ package pl.com.sda;
 
 import org.junit.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.*;
 
 public class PaginatorTest {
