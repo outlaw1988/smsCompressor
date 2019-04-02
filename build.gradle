@@ -10,8 +10,20 @@ repositories {
     mavenCentral()
 }
 
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',
+                'Implementation-Version': version,
+                'Main-Class': 'pl.com.sda.Main'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile("org.assertj:assertj-core:3.11.1")
     compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.1'
+    compile group: 'info.picocli', name: 'picocli', version: '3.9.5'
 }
